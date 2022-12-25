@@ -19,6 +19,7 @@ class HomePageUpdateUi extends StatelessWidget {
         ),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             width: 6.w,
