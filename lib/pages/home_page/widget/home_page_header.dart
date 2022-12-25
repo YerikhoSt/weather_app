@@ -82,7 +82,7 @@ class _HomePageHeaderState extends State<HomePageHeader> {
                   return Obx(
                     () => Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 200.h,
+                      height: 320.h,
                       padding: EdgeInsets.symmetric(horizontal: 20.sp),
                       decoration: BoxDecoration(
                         color: Theme.of(context).backgroundColor,

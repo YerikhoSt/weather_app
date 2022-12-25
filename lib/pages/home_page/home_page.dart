@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     controller.getWeather(context);
+    controller.getDataWeather();
     controller.weatherChoice.value = weatherLocal.getWeather(1);
     super.dispose();
   }
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           const HomePageMainWeather(),
           Obx(
-            () => controller.loadingWeather.value
+            () => controller.listHourlyWeather.value.isEmpty
                 ? Text(
                     'Loading...',
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(

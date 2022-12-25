@@ -14,7 +14,6 @@ class WeatherAppController extends GetxController {
   var locationName = ''.obs;
   var listHourlyWeather = <WeatherModel>[].obs;
   var listDailyWeather = <WeatherDailyModel>[].obs;
-  var loadingWeather = false.obs;
   var isSelected = false.obs;
   var selectedWeatherIndex = 0.obs;
   var currentWeather = Rxn<WeatherModel>();
@@ -38,7 +37,8 @@ class WeatherAppController extends GetxController {
     listDailyWeather.value = weatherLocal.getWeathersDaily();
     weatherChoice.value = weatherLocal.getWeather(1);
     weatherDailyChoice.value = weatherLocal.getWeatherDaily(1);
-    await fetchData(
+
+    fetchData(
             'data/2.5/onecall?lat=$lat&lon=$long&units=metric&appid=${Config.apiKey}')
         .then((value) {
       //INPUT CURRENT WEATHER
@@ -78,7 +78,6 @@ class WeatherAppController extends GetxController {
         );
 
         weatherLocal.insertWeather(todayWeather);
-        print('LENGHT ====> ${weatherLocal.getWeathers().length}');
         listHourlyWeather.value = weatherLocal.getWeathers();
         weatherChoice.value = weatherLocal.getWeather(1);
       }
@@ -109,10 +108,7 @@ class WeatherAppController extends GetxController {
   }
 
   Future<void> getWeather(BuildContext context) async {
-    loadingWeather.value = true;
-
     await getLatLong(context);
     await getDataWeather();
-    loadingWeather.value = false;
   }
 }

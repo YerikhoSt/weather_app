@@ -59,7 +59,7 @@ class HomePageMainWeather extends GetView<WeatherAppController> {
                 ),
                 const HomePageUpdateUi(),
                 Obx(
-                  () => controller.loadingWeather.value
+                  () => controller.listHourlyWeather.value.isEmpty
                       ? Container(
                           margin: EdgeInsets.only(top: 100.h),
                           child: Center(

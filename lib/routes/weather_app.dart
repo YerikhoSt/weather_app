@@ -66,6 +66,7 @@ class _WeatherAppBodyState extends State<WeatherAppBody> {
   @override
   void initState() {
     controller.getWeather(context);
+    controller.getDataWeather();
     super.initState();
   }
 
