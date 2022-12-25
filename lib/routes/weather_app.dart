@@ -62,8 +62,11 @@ class _WeatherAppBodyState extends State<WeatherAppBody> {
     setState(() => _locale = locale);
   }
 
+  var controller = Get.put(WeatherAppController());
   @override
   void initState() {
+    controller.getWeather(context);
+    controller.getDataWeather();
     super.initState();
   }
 
