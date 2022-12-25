@@ -27,21 +27,17 @@ class WeatherAppController extends GetxController {
       long.value = value.longitude;
     });
     List<Placemark> placemarks =
-        await placemarkFromCoordinates(-6.200000, 106.816666);
+        await placemarkFromCoordinates(lat.value, long.value);
 
     locationName.value = placemarks[0].country!;
   }
 
   Future<void> getDataWeather() async {
-    listHourlyWeather.value = weatherLocal.getWeathers();
-    listDailyWeather.value = weatherLocal.getWeathersDaily();
-    weatherChoice.value = weatherLocal.getWeather(1);
-    weatherDailyChoice.value = weatherLocal.getWeatherDaily(1);
-
-    fetchData(
-            'data/2.5/onecall?lat=$lat&lon=$long&units=metric&appid=${Config.apiKey}')
+    await fetchData(
+            'data/2.5/onecall?lat=$lat&lon=$long&units=metric&appid=45865970ebbfbc127eb2a16dd7f753e7')
         .then((value) {
       //INPUT CURRENT WEATHER
+      print('iis value $value');
       DateTime currentTime = DateTime.fromMillisecondsSinceEpoch(
         value['current']['dt'] * 1000,
         isUtc: false,
@@ -108,6 +104,10 @@ class WeatherAppController extends GetxController {
   }
 
   Future<void> getWeather(BuildContext context) async {
+    listHourlyWeather.value = weatherLocal.getWeathers();
+    listDailyWeather.value = weatherLocal.getWeathersDaily();
+    weatherChoice.value = weatherLocal.getWeather(1);
+    weatherDailyChoice.value = weatherLocal.getWeatherDaily(1);
     await getLatLong(context);
     await getDataWeather();
   }

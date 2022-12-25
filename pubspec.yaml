@@ -23,6 +23,7 @@ dependencies:
   objectbox: ^1.7.0
   objectbox_flutter_libs: ^1.7.0
   geolocator: ^9.0.2
+  connectivity_plus: ^3.0.2
   cached_network_image: ^3.2.3
   flutter_native_splash: ^2.2.16
 

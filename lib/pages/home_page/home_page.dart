@@ -19,15 +19,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     controller.getWeather(context);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.getWeather(context);
     controller.getDataWeather();
     controller.weatherChoice.value = weatherLocal.getWeather(1);
-    super.dispose();
+    super.initState();
   }
 
   @override
