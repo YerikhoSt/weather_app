@@ -16,7 +16,7 @@ class SevendDaysBody extends GetView<WeatherAppController> {
         padding: EdgeInsets.only(
           bottom: 33.sp,
         ),
-        itemCount: controller.listDailyWeather.length,
+        itemCount: controller.listDailyWeather.sublist(0, 7).length,
         itemBuilder: (context, index) {
           return SevenDaysWeatherCard(
             onTap: () {
